@@ -7,21 +7,23 @@ steps:
     args:
       - 'build'
       - '-t'
-      - 'asia-east1-docker.pkg.dev/predictive-maintenance-448107/mlops/fastapi-app:$COMMIT_SHA'
+      - 'asia-east1-docker.pkg.dev/rugged-baton-448820-a2/mlops/fastapi-app:$COMMIT_SHA'
       - '-t'
-      - 'asia-east1-docker.pkg.dev/predictive-maintenance-448107/mlops/fastapi-app:latest'
-      - '.'
+      - 'asia-east1-docker.pkg.dev/rugged-baton-448820-a2/mlops/fastapi-app:latest'
+      - '-f'  # Specify the Dockerfile to use
+      - 'Dockerfile.fastapi.txt'  # Your custom Dockerfile name
+      - '.'  # Context directory
 
   # Push the Docker image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'push'
-      - 'asia-east1-docker.pkg.dev/predictive-maintenance-448107/mlops/fastapi-app:$COMMIT_SHA'
+      - 'asia-east1-docker.pkg.dev/rugged-baton-448820-a2/mlops/fastapi-app:$COMMIT_SHA'
 
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'push'
-      - 'asia-east1-docker.pkg.dev/predictive-maintenance-448107/mlops/fastapi-app:latest'
+      - 'asia-east1-docker.pkg.dev/rugged-baton-448820-a2/mlops/fastapi-app:latest'
 
   # Deploy to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -29,9 +31,9 @@ steps:
     args:
       - 'run'
       - 'deploy'
-      - 'fastapi-app-service'
+      - 'fastapi-app-service'  # Name of the Cloud Run service
       - '--image'
-      - 'asia-east1-docker.pkg.dev/predictive-maintenance-448107/mlops/fastapi-app:$COMMIT_SHA'
+      - 'asia-east1-docker.pkg.dev/rugged-baton-448820-a2/mlops/fastapi-app:$COMMIT_SHA'
       - '--platform'
       - 'managed'
       - '--region'
@@ -40,5 +42,5 @@ steps:
 
 substitutions:
   _REGION: asia-east1
-  _PROJECT_ID: predictive-maintenance-448107
+  _PROJECT_ID: rugged-baton-448820-a2
   _REPOSITORY_NAME: mlops
