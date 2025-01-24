@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1737761390833
+current_stage: None
+description: null
+last_updated_timestamp: 1737761390833
+name: RandomForest
+run_id: a61f43fa891f4a28b2dba82a5074f7e9
+run_link: null
+source: file:///C:/Users/rajes/OneDrive/Desktop/Praxis/Predictive_maintenance/mlruns/532077788866288560/a61f43fa891f4a28b2dba82a5074f7e9/artifacts/model
+status: READY
+status_message: null
+storage_location: file:///C:/Users/rajes/OneDrive/Desktop/Praxis/Predictive_maintenance/mlruns/532077788866288560/a61f43fa891f4a28b2dba82a5074f7e9/artifacts/model
+user_id: null
+version: 1

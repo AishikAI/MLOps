@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/rajes/OneDrive/Desktop/Praxis/Predictive_maintenance/mlruns/532077788866288560/e66f6b8c25634e6ea6d163e8faf1742b/artifacts
+end_time: 1737761209508
+entry_point_name: ''
+experiment_id: '532077788866288560'
+lifecycle_stage: active
+run_id: e66f6b8c25634e6ea6d163e8faf1742b
+run_name: RandomForest
+run_uuid: e66f6b8c25634e6ea6d163e8faf1742b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737761207903
+status: 3
+tags: []
+user_id: rajes

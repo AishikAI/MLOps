@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/rajes/OneDrive/Desktop/Praxis/Predictive_maintenance/mlruns/532077788866288560/d12bb31aeae84c2c93e8fe28636d6e61/artifacts
+end_time: 1737761378563
+entry_point_name: ''
+experiment_id: '532077788866288560'
+lifecycle_stage: active
+run_id: d12bb31aeae84c2c93e8fe28636d6e61
+run_name: XGBoost
+run_uuid: d12bb31aeae84c2c93e8fe28636d6e61
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737761377720
+status: 3
+tags: []
+user_id: rajes

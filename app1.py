@@ -51,10 +51,6 @@ def root():
     else:
         raise HTTPException(status_code=500, detail="No trained model found. Train a model first!")
 
-# **Favicon Route to Handle 404 Errors**
-@app.get("/favicon.ico")
-def favicon():
-    return FileResponse("path_to_your_favicon/favicon.ico")  # Provide the correct path to your favicon.ico file
 
 # **Step 5: Prediction Endpoint**
 @app.post("/predict/")

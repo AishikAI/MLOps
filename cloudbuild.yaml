@@ -1,21 +1,29 @@
 options:
-  logging: CLOUD_LOGGING_ONLY  # Fixes Cloud Build logging issue
+  logging: CLOUD_LOGGING_ONLY  # Fixes the Cloud Build logging issue
 
 steps:
-  # Build and Push Docker Image to Artifact Registry
+  # Build the Docker image
   - name: 'gcr.io/cloud-builders/docker'
     args:
-      - 'buildx'
       - 'build'
-      - '--platform=linux/amd64'  # Ensures compatibility with Cloud Run
-      - '--push'  # Pushes image to registry after build
       - '-t'
-      - 'asia-east1-docker.pkg.dev/rugged-baton-448820-a2/mlops/fastapi-app:$COMMIT_SHA'
+      - 'asia-east1-docker.pkg.dev/rugged-baton-448820-a2/mlops/predictive-maintenance:$COMMIT_SHA'
       - '-t'
-      - 'asia-east1-docker.pkg.dev/rugged-baton-448820-a2/mlops/fastapi-app:latest'
+      - 'asia-east1-docker.pkg.dev/rugged-baton-448820-a2/mlops/predictive-maintenance:latest'
       - '-f'
-      - 'Dockerfile.fastapi.txt'  # Your Dockerfile name
-      - '.'  # Context directory
+      - 'Dockerfile.fastapi.txt'  # Specify the Dockerfile name
+      - '.'
+
+  # Push the Docker image to Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'asia-east1-docker.pkg.dev/rugged-baton-448820-a2/mlops/predictive-maintenance:$COMMIT_SHA'
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'asia-east1-docker.pkg.dev/rugged-baton-448820-a2/mlops/predictive-maintenance:latest'
 
   # Deploy to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -23,16 +31,16 @@ steps:
     args:
       - 'run'
       - 'deploy'
-      - 'fastapi-app-service'  # Cloud Run service name
+      - 'predictive-maintenance-service'
       - '--image'
-      - 'asia-east1-docker.pkg.dev/rugged-baton-448820-a2/mlops/fastapi-app:$COMMIT_SHA'
+      - 'asia-east1-docker.pkg.dev/rugged-baton-448820-a2/mlops/predictive-maintenance:$COMMIT_SHA'
       - '--platform'
       - 'managed'
       - '--region'
       - 'asia-east1'
       - '--allow-unauthenticated'
-      - '--quiet'  # Suppress logs for automation
 
 substitutions:
   _REGION: asia-east1
   _PROJECT_ID: rugged-baton-448820-a2
+  _REPOSITORY_NAME: mlops
