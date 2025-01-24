@@ -1,29 +1,21 @@
 options:
-  logging: CLOUD_LOGGING_ONLY  # Fixes the Cloud Build logging issue
+  logging: CLOUD_LOGGING_ONLY  # Fixes Cloud Build logging issue
 
 steps:
-  # Build the Docker image
+  # Build and Push Docker Image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     args:
+      - 'buildx'
       - 'build'
+      - '--platform=linux/amd64'  # Ensures compatibility with Cloud Run
+      - '--push'  # Pushes image to registry after build
       - '-t'
       - 'asia-east1-docker.pkg.dev/rugged-baton-448820-a2/mlops/fastapi-app:$COMMIT_SHA'
       - '-t'
       - 'asia-east1-docker.pkg.dev/rugged-baton-448820-a2/mlops/fastapi-app:latest'
-      - '-f'  # Specify the Dockerfile to use
-      - 'Dockerfile.fastapi.txt'  # Your custom Dockerfile name
+      - '-f'
+      - 'Dockerfile.fastapi.txt'  # Your Dockerfile name
       - '.'  # Context directory
-
-  # Push the Docker image to Artifact Registry
-  - name: 'gcr.io/cloud-builders/docker'
-    args:
-      - 'push'
-      - 'asia-east1-docker.pkg.dev/rugged-baton-448820-a2/mlops/fastapi-app:$COMMIT_SHA'
-
-  - name: 'gcr.io/cloud-builders/docker'
-    args:
-      - 'push'
-      - 'asia-east1-docker.pkg.dev/rugged-baton-448820-a2/mlops/fastapi-app:latest'
 
   # Deploy to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -31,7 +23,7 @@ steps:
     args:
       - 'run'
       - 'deploy'
-      - 'fastapi-app-service'  # Name of the Cloud Run service
+      - 'fastapi-app-service'  # Cloud Run service name
       - '--image'
       - 'asia-east1-docker.pkg.dev/rugged-baton-448820-a2/mlops/fastapi-app:$COMMIT_SHA'
       - '--platform'
@@ -39,8 +31,8 @@ steps:
       - '--region'
       - 'asia-east1'
       - '--allow-unauthenticated'
+      - '--quiet'  # Suppress logs for automation
 
 substitutions:
   _REGION: asia-east1
   _PROJECT_ID: rugged-baton-448820-a2
-  _REPOSITORY_NAME: mlops

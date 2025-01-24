@@ -1,14 +1,18 @@
 # Use an official Python runtime as the base image
 FROM python:3.10-slim
 
+# Set environment variables
+ENV PYTHONUNBUFFERED=1
+
 # Set the working directory in the container
 WORKDIR /app
 
-# Copy the requirements file into the container
+# Copy only the requirements file first (for better layer caching)
 COPY requirements_2.txt /app/requirements.txt
 
-# Install the Python dependencies
-RUN pip install --no-cache-dir -r /app/requirements.txt
+# Upgrade pip and install dependencies
+RUN pip install --no-cache-dir --upgrade pip \
+    && pip install --no-cache-dir -r /app/requirements.txt
 
 # Copy the FastAPI application and other project files into the container
 COPY . /app
@@ -17,7 +21,7 @@ COPY . /app
 EXPOSE 8080
 
 # Health check to ensure the application is running
-HEALTHCHECK CMD wget --spider -q http://localhost:8080/ || exit 1
+HEALTHCHECK --interval=30s --timeout=5s --retries=3 CMD curl -f http://localhost:8080/ || exit 1
 
 # Command to run the FastAPI app using Uvicorn
 CMD ["uvicorn", "app1:app", "--host", "0.0.0.0", "--port", "8080"]
