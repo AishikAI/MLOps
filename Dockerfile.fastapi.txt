@@ -8,16 +8,16 @@ WORKDIR /app
 COPY requirements_2.txt /app/requirements.txt
 
 # Install the Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r /app/requirements.txt
 
 # Copy the FastAPI application and other project files into the container
 COPY . /app
 
-# Expose the port that FastAPI will run on
-EXPOSE 8000
-
-# Command to run the FastAPI app using Uvicorn
-CMD ["uvicorn", "app1:app", "--host", "0.0.0.0", "--port", "8000"]
+# Expose the correct port (Cloud Run default is 8080)
+EXPOSE 8080
 
 # Health check to ensure the application is running
-HEALTHCHECK CMD curl --fail http://localhost:8000/ || exit 1
+HEALTHCHECK CMD wget --spider -q http://localhost:8080/ || exit 1
+
+# Command to run the FastAPI app using Uvicorn
+CMD ["uvicorn", "app1:app", "--host", "0.0.0.0", "--port", "8080"]
