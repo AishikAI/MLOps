@@ -1,11 +1,10 @@
 # Use an official Python runtime as the base image
 FROM python:3.10-slim
 
-
 # Set the working directory in the container
 WORKDIR /app
 
-# Copy the second requirements file into the container
+# Copy the requirements file into the container
 COPY requirements_2.txt /app/requirements.txt
 
 # Install the Python dependencies
@@ -19,3 +18,6 @@ EXPOSE 8000
 
 # Command to run the FastAPI app using Uvicorn
 CMD ["uvicorn", "app1:app", "--host", "0.0.0.0", "--port", "8000"]
+
+# Health check to ensure the application is running
+HEALTHCHECK CMD curl --fail http://localhost:8000/ || exit 1
