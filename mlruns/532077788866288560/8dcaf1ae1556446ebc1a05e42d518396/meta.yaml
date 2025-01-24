@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/rajes/OneDrive/Desktop/Praxis/Predictive_maintenance/mlruns/532077788866288560/8dcaf1ae1556446ebc1a05e42d518396/artifacts
+end_time: 1737664514629
+entry_point_name: ''
+experiment_id: '532077788866288560'
+lifecycle_stage: active
+run_id: 8dcaf1ae1556446ebc1a05e42d518396
+run_name: puzzled-ox-117
+run_uuid: 8dcaf1ae1556446ebc1a05e42d518396
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737664498495
+status: 3
+tags: []
+user_id: rajes

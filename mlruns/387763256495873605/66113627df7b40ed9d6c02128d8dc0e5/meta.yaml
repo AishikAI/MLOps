@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/rajes/OneDrive/Desktop/Praxis/Predictive_maintenance/mlruns/387763256495873605/66113627df7b40ed9d6c02128d8dc0e5/artifacts
+end_time: 1737667806278
+entry_point_name: ''
+experiment_id: '387763256495873605'
+lifecycle_stage: active
+run_id: 66113627df7b40ed9d6c02128d8dc0e5
+run_name: bright-pug-681
+run_uuid: 66113627df7b40ed9d6c02128d8dc0e5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737667806188
+status: 3
+tags: []
+user_id: rajes

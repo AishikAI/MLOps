@@ -112,14 +112,14 @@ and from this step we get to know that ['Rotational speed [rpm]', 'Torque [Nm]',
 X_train_selected = X_train[selected_features]
 X_test_selected = X_test[selected_features]
 
-rf_model.fit(X_train_selected, y_train)
+rfe.fit(X_train_selected, y_train)
 
-y_pred = rf_model.predict(X_test_selected)
+y_pred = rfe.predict(X_test_selected)
 
 print("Accuracy:", accuracy_score(y_test, y_pred))
 print("\nClassification Report:\n", classification_report(y_test, y_pred))
 
-y_proba = rf_model.predict_proba(X_test_selected)[:, 1]
+y_proba = rfe.predict_proba(X_test_selected)[:, 1]
 print("ROC AUC Score:", roc_auc_score(y_test, y_proba))
 
 """Let's see our evaluation score of our model
@@ -151,7 +151,7 @@ High Recall for Failures: Captures 97% of actual failures, minimizing the risk o
 Balanced Performance: Exceptional precision, recall, and F1-score across both classes.
 """
 
-feature_importances = rf_model.feature_importances_
+feature_importances = rfe.estimator_.feature_importances_
 sorted_indices = np.argsort(feature_importances)[::-1]
 
 plt.figure(figsize=(10, 6))

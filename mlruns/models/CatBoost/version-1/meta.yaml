@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1737665983556
+current_stage: None
+description: null
+last_updated_timestamp: 1737665983556
+name: CatBoost
+run_id: 13e6f65b9ef546a88698763e52e65452
+run_link: null
+source: file:///C:/Users/rajes/OneDrive/Desktop/Praxis/Predictive_maintenance/mlruns/532077788866288560/13e6f65b9ef546a88698763e52e65452/artifacts/model
+status: READY
+status_message: null
+storage_location: file:///C:/Users/rajes/OneDrive/Desktop/Praxis/Predictive_maintenance/mlruns/532077788866288560/13e6f65b9ef546a88698763e52e65452/artifacts/model
+user_id: null
+version: 1

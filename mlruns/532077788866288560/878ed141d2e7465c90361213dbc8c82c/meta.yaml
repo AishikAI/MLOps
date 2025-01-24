@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/rajes/OneDrive/Desktop/Praxis/Predictive_maintenance/mlruns/532077788866288560/878ed141d2e7465c90361213dbc8c82c/artifacts
+end_time: 1737665067142
+entry_point_name: ''
+experiment_id: '532077788866288560'
+lifecycle_stage: active
+run_id: 878ed141d2e7465c90361213dbc8c82c
+run_name: CatBoost
+run_uuid: 878ed141d2e7465c90361213dbc8c82c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737665059545
+status: 3
+tags: []
+user_id: rajes

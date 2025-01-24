@@ -1,0 +1,10 @@
+FROM python:3.10
+
+WORKDIR /app
+
+COPY requirements.txt requirements2.txt
+RUN pip install -r requirements2.txt
+
+EXPOSE 5000
+
+CMD ["mlflow", "server", "--host", "0.0.0.0", "--port", "5000", "--backend-store-uri", "sqlite:///mlflow.db"]

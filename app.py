@@ -45,9 +45,10 @@ if mode == "Single Input":
         "RNF": "Random Failure - Perform general maintenance."
     }
 
+    # **Update the column names to match the model's expected input**
     input_data = pd.DataFrame([[temperature, process_temp, speed, torque, tool_wear, type_option, 0, 0, 0, 0, 0]],
-                              columns=["Air temperature [K]", "Process temperature [K]", "Rotational speed [rpm]", 
-                                       "Torque [Nm]", "Tool wear [min]", "Type", "TWF", "HDF", "PWF", "OSF", "RNF"])
+                              columns=["Air_temperature_K", "Process_temperature_K", "Rotational_speed_rpm", 
+                                       "Torque_Nm", "Tool_wear_min", "Type", "TWF", "HDF", "PWF", "OSF", "RNF"])
 
     if st.button("Predict"):
         prediction = model.predict(input_data)[0]
@@ -69,6 +70,15 @@ elif mode == "Batch Upload":
         df = pd.read_csv(uploaded_file)
         st.write("📊 **Uploaded Data Preview:**")
         st.write(df.head())
+
+        # Ensure that column names in the uploaded data match the expected names
+        df = df.rename(columns={
+            "Air temperature [K]": "Air_temperature_K",
+            "Process temperature [K]": "Process_temperature_K",
+            "Rotational speed [rpm]": "Rotational_speed_rpm",
+            "Torque [Nm]": "Torque_Nm",
+            "Tool wear [min]": "Tool_wear_min"
+        })
 
         df["Prediction"] = model.predict(df)
         df["Prediction"] = df["Prediction"].map({0: "✅ No Failure", 1: "⚠️ Failure Detected"})

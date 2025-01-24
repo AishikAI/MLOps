@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/rajes/OneDrive/Desktop/Praxis/Predictive_maintenance/mlruns/532077788866288560/6055a63f5a2d481ba784c0ec70f99e4c/artifacts
+end_time: 1737663940739
+entry_point_name: ''
+experiment_id: '532077788866288560'
+lifecycle_stage: active
+run_id: 6055a63f5a2d481ba784c0ec70f99e4c
+run_name: LogisticRegression
+run_uuid: 6055a63f5a2d481ba784c0ec70f99e4c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737663940240
+status: 3
+tags: []
+user_id: rajes

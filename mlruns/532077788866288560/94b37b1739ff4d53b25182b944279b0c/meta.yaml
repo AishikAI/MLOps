@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/rajes/OneDrive/Desktop/Praxis/Predictive_maintenance/mlruns/532077788866288560/94b37b1739ff4d53b25182b944279b0c/artifacts
+end_time: 1737665971024
+entry_point_name: ''
+experiment_id: '532077788866288560'
+lifecycle_stage: active
+run_id: 94b37b1739ff4d53b25182b944279b0c
+run_name: SVM
+run_uuid: 94b37b1739ff4d53b25182b944279b0c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737665968801
+status: 3
+tags: []
+user_id: rajes

@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/rajes/OneDrive/Desktop/Praxis/Predictive_maintenance/mlruns/532077788866288560/a7aa471699b54af789b3842c70b8ae2d/artifacts
+end_time: 1737667068028
+entry_point_name: ''
+experiment_id: '532077788866288560'
+lifecycle_stage: active
+run_id: a7aa471699b54af789b3842c70b8ae2d
+run_name: DecisionTree
+run_uuid: a7aa471699b54af789b3842c70b8ae2d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737667067522
+status: 3
+tags: []
+user_id: rajes

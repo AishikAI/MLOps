@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/rajes/OneDrive/Desktop/Praxis/Predictive_maintenance/mlruns/387763256495873605/2a4023de5f65417597f01c8783b66f84/artifacts
+end_time: 1737666544398
+entry_point_name: ''
+experiment_id: '387763256495873605'
+lifecycle_stage: active
+run_id: 2a4023de5f65417597f01c8783b66f84
+run_name: receptive-croc-252
+run_uuid: 2a4023de5f65417597f01c8783b66f84
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737666544321
+status: 3
+tags: []
+user_id: rajes

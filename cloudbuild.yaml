@@ -7,21 +7,21 @@ steps:
     args:
       - 'build'
       - '-t'
-      - 'asia-east1-docker.pkg.dev/predictive-maintenance-448107/mlops/predictive-maintenance:$COMMIT_SHA'
+      - 'asia-east1-docker.pkg.dev/predictive-maintenance-448107/mlops/fastapi-app:$COMMIT_SHA'
       - '-t'
-      - 'asia-east1-docker.pkg.dev/predictive-maintenance-448107/mlops/predictive-maintenance:latest'
+      - 'asia-east1-docker.pkg.dev/predictive-maintenance-448107/mlops/fastapi-app:latest'
       - '.'
 
   # Push the Docker image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'push'
-      - 'asia-east1-docker.pkg.dev/predictive-maintenance-448107/mlops/predictive-maintenance:$COMMIT_SHA'
+      - 'asia-east1-docker.pkg.dev/predictive-maintenance-448107/mlops/fastapi-app:$COMMIT_SHA'
 
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'push'
-      - 'asia-east1-docker.pkg.dev/predictive-maintenance-448107/mlops/predictive-maintenance:latest'
+      - 'asia-east1-docker.pkg.dev/predictive-maintenance-448107/mlops/fastapi-app:latest'
 
   # Deploy to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -29,9 +29,9 @@ steps:
     args:
       - 'run'
       - 'deploy'
-      - 'predictive-maintenance-service'
+      - 'fastapi-app-service'
       - '--image'
-      - 'asia-east1-docker.pkg.dev/predictive-maintenance-448107/mlops/predictive-maintenance:$COMMIT_SHA'
+      - 'asia-east1-docker.pkg.dev/predictive-maintenance-448107/mlops/fastapi-app:$COMMIT_SHA'
       - '--platform'
       - 'managed'
       - '--region'

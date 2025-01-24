@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/rajes/OneDrive/Desktop/Praxis/Predictive_maintenance/mlruns/387763256495873605/b4a610ef877a4972a62d59e09616e7cd/artifacts
+end_time: 1737667041695
+entry_point_name: ''
+experiment_id: '387763256495873605'
+lifecycle_stage: active
+run_id: b4a610ef877a4972a62d59e09616e7cd
+run_name: mercurial-moose-241
+run_uuid: b4a610ef877a4972a62d59e09616e7cd
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737667040964
+status: 3
+tags: []
+user_id: rajes
