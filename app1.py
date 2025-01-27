@@ -7,6 +7,11 @@ import joblib
 import os
 from io import StringIO
 
+import os
+
+port = int(os.environ.get("PORT", 8080))  # Default to 8080 if PORT is not set
+
+
 # **Step 1: Automatically Find the Best Model**
 def find_latest_model():
     model_files = [f for f in os.listdir() if f.startswith("best_model_") and f.endswith(".pkl")]
