@@ -7,23 +7,23 @@ steps:
     args:
       - 'build'
       - '-t'
-      - 'asia-east1-docker.pkg.dev/rugged-baton-448820-a2/mlops/predictive-maintenance:$COMMIT_SHA'
+      - '$_REGION-docker.pkg.dev/$_PROJECT_ID/$_REPOSITORY_NAME/predictive-maintenance:$COMMIT_SHA'
       - '-t'
-      - 'asia-east1-docker.pkg.dev/rugged-baton-448820-a2/mlops/predictive-maintenance:latest'
+      - '$_REGION-docker.pkg.dev/$_PROJECT_ID/$_REPOSITORY_NAME/predictive-maintenance:latest'
       - '-f'
-      - 'Dockerfile.fastapi.txt'  # Specify the Dockerfile name
+      - 'Dockerfile'  # Specify the correct Dockerfile name
       - '.'
 
   # Push the Docker image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'push'
-      - 'asia-east1-docker.pkg.dev/rugged-baton-448820-a2/mlops/predictive-maintenance:$COMMIT_SHA'
+      - '$_REGION-docker.pkg.dev/$_PROJECT_ID/$_REPOSITORY_NAME/predictive-maintenance:$COMMIT_SHA'
 
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'push'
-      - 'asia-east1-docker.pkg.dev/rugged-baton-448820-a2/mlops/predictive-maintenance:latest'
+      - '$_REGION-docker.pkg.dev/$_PROJECT_ID/$_REPOSITORY_NAME/predictive-maintenance:latest'
 
   # Deploy to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -33,14 +33,14 @@ steps:
       - 'deploy'
       - 'predictive-maintenance-service'
       - '--image'
-      - 'asia-east1-docker.pkg.dev/rugged-baton-448820-a2/mlops/predictive-maintenance:$COMMIT_SHA'
+      - '$_REGION-docker.pkg.dev/$_PROJECT_ID/$_REPOSITORY_NAME/predictive-maintenance:$COMMIT_SHA'
       - '--platform'
       - 'managed'
       - '--region'
-      - 'asia-east1'
+      - '$_REGION'
       - '--allow-unauthenticated'
 
 substitutions:
-  _REGION: asia-east1
-  _PROJECT_ID: rugged-baton-448820-a2
-  _REPOSITORY_NAME: mlops
+  _REGION: 'asia-east1'
+  _PROJECT_ID: 'praxis-449204'
+  _REPOSITORY_NAME: 'mlops'
